@@ -1,0 +1,71 @@
+%transparent {
+  opacity: 0;
+}
+
+%transparent-active {
+  transition: opacity .5s ease;
+}
+
+// mask
+.mask-enter,
+.mask-leave-to {
+  @extend %transparent;
+  transform: scale(1.2);
+}
+
+.mask-enter-to,
+.mask-leave {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.mask-enter-active,
+.mask-leave-active {
+  transition: opacity .5s, transform .5s;
+}
+
+// fade
+.fade-enter,
+.fade-leave-to {
+  @extend %transparent;
+}
+
+.fade-enter-to,
+.fade-leave {
+  opacity: 1;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  @extend %transparent-active;
+}
+
+// list-in
+.list-in-enter {
+  @extend %transparent;
+  transform: translate(30px, 0);
+}
+
+.list-in-enter-to,
+.list-in-leave {
+  opacity: 1;
+  transform: translate(0px, 0);
+}
+
+.list-in-enter-active {
+  transition: opacity 1s, transform 1s;
+  @for $i from 1 to 13 {
+    &:nth-of-type(#{$i}) {
+      transition-delay: $i * 0.15s;
+    }
+  }
+}
+
+.list-in-leave-to {
+  @extend %transparent;
+  transform: translate(-30px, 0);
+}
+
+.list-in-leave-active {
+  transition: opacity .5s, transform .5s;
+}
